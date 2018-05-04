@@ -1,0 +1,30 @@
+
+Bon à savoir :
+
+Pour trouver des tutoriels et de la documentattion sur Django :
+
+ - https://docs.djangoproject.com/en/1.11/ (doc officielle)
+ - https://tutorial.djangogirls.org/fr/ (bon tutoriel)
+ - https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication (autre bon tutoriel, notemment pour les systèmes d'authentification)
+
+Pour tracer des graphiques :
+ - http://www.idreammicro.com/post/django-chartit (tutoriel django-chartit)
+ - http://django-chartit.mrsenko.com/demo/chart/multi-table-same-x/ (des exemples de ce qu'on peut faire avec django-chartit)
+ - https://www.highcharts.com/demo/grid-light (doc officielle de HighCharts, bibliothèque utilisée par django-chartit,
+ montre d'autres exemples de ce qu'on peut faire avec django-chartit
+
+Pour améliorer le design du site :
+ - https://www.w3schools.com/bootstrap/default.asp (doc sur Bootstrap, bibliothèque qui permet d'améliorer le rendu en HTML)
+
+Pour les tableaux en HTML :
+ - http://formation.upyupy.fr/html-xhtml/tableaux-html/
+
+Pour les formulaires de simulation et doublure :
+ - https://github.com/jessykate/django-survey (je me suis beaucoup inspiré de ce travail)
+
+Pour s'identifier :
+- superutilisateur : il a tous les droits dans l'interface administrateur de django : nom d'utilisateur : admin / mot de passe : azertyui
+- formateur : utilisateur de profil formateur : nom d'utilisateur : formateur_test / mot de passe : azertyui
+- stagiaire : - ada : courbe en condition réelle : nom d'utilisateur : ada / mot de passe : azertyui
+              - marie : permet de voir les différentes fonctionnalités de la formation théorique : nom d'utilisateur : marie / mot de passe : azertyui
+              - jane : utile pour test : nom d'utilisateur : doe_jane / mot de passe : azertyui
