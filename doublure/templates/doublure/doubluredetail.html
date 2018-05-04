@@ -1,0 +1,180 @@
+{% extends "registration/base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Simulation</title>
+</head>
+{% load modulesimulation.survey_extras %}
+<body>
+{% block content %}
+<ul>
+<div style="padding:6px; border:4px solid #e0e0e0;width:1200px;">
+	<div style="padding:5px; background-color:#e0e0e0;">
+		<div style="padding:3px; border:2px dotted #a5a5a5; background-color:#e3e3e3;">
+<h1>Doublure : {{doublure.name}}</h1>
+<div class="simulation-description">
+	{{doublure.description|safe}}<br/>
+
+
+
+ </div>
+		</div>
+<div>
+ 	<form action="/doublure/{{doublure.id}}/{{stagiaire.id}}/" method="post">{% csrf_token %}
+
+
+ 		<h3 class="collapsible" id="response_metadata"><span></span></h3>
+ 		<div class="category-container">
+
+
+ 		<div class="field-wrapper objectif-required">
+ 			{{ response_form.doubleur.errors }}
+ 			<span class="asterix"> * </span>{{ response_form.doubleur.label_tag }}
+ 			<span class="form-help-text">{{ response_form.doubleur.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.doubleur}}
+ 			</div>
+ 		</div>
+
+		<div class="field-wrapper objectif-required">
+ 			{{ response_form.mce.errors }}
+ 			<span class="asterix"> * </span>{{ response_form.mce.label_tag }}
+ 			<span class="form-help-text">{{ response_form.mce.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.mce}}
+ 			</div>
+ 		</div>
+
+
+ 		<div class="field-wrapper objectif-required">
+ 			{{ response_form.stagiaire.errors }}
+ 			<span class="asterix"> * </span>{{ response_form.stagiaire.label_tag }}
+ 			<span class="form-help-text">{{ response_form.stagiaire.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.stagiaire }}
+ 			</div>
+ 		</div>
+
+		<div class="field-wrapper objectif-required">
+ 			{{ response_form.zone.errors }}
+ 			<span class="asterix"> * </span>{{ response_form.zone.label_tag }}
+ 			<span class="form-help-text">{{ response_form.zone.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.zone }}
+ 			</div>
+ 		</div>
+
+
+ 		<div class="field-wrapper">
+ 			{{ response_form.comments.errors }}
+ 			{{ response_form.comments.label_tag }}
+ 			<span class="form-help-text">{{ response_form.comments.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.comments }}
+ 			</div>
+		</div>
+
+		<div class="field-wrapper">
+ 			{{ response_form.positif.errors }}
+ 			{{ response_form.positif.label_tag }}
+ 			<span class="form-help-text">{{ response_form.positif.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.positif }}
+ 			</div>
+		</div>
+
+		<div class="field-wrapper">
+ 			{{ response_form.amelioration.errors }}
+ 			{{ response_form.amelioration.label_tag }}
+ 			<span class="form-help-text">{{ response_form.amelioration.help_text}}</span>
+ 			<div class="form-field-body">
+ 				{{ response_form.amelioration }}
+ 			</div>
+		</div>
+ 	</div>
+
+<br/>
+ 		<ol class="simulation-objectifs">
+        {% for theme in themes %}
+            <div style="padding:6px; border:4px solid #bbbbbb;width:1000px;">
+	<div style="padding:5px; background-color:#bbbbbb;">
+
+            <h3 class="collapsible"><b><u>{{theme|title}}</u> </b></h3>
+
+ 		        {% for soustheme in sousthemes %}
+
+
+			<br/>
+
+            {% if theme == soustheme.theme %}
+            <h4><b><u>{{soustheme}}</u></b></h4>
+
+
+			<h5>Objectifs : </h5>
+
+
+
+
+ 			<div class="category-container">
+ 			{% for field in response_form %}
+
+
+ 				{% if field.field.widget.attrs.soustheme == soustheme.name %}
+
+ 					{% if field.field.required %}
+ 					<div class="field-wrapper objectif-required">
+ 						{{ field.errors }}
+ 						<span class="asterix"> * </span><label class="label-inline">{{ field.label }}</label>
+ 					{% else %}
+ 					<div class="field-wrapper">
+ 						{{ field.errors }}
+						{% if field.label == "Commentaire" %}
+						<div align="right"> <button type="button" class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#{{field.name}}"><label class="label-inline">{{ field.label}}</label></button></div>
+						<div id="{{field.name}}" class="collapse" align="right"><div class="form-field-body">
+ 							{{ field }}
+						</div></div>
+						{% else %}
+ 						<label class="label-inline">{{ field.label }} : </label>
+						{% endif %}
+ 					{% endif %}
+						{% if field.label != "Commentaire" %}
+ 						<span class="form-help-text">{{ field.help_text}}</span>
+ 						<div class="form-field-body" align="right">
+ 							{{ field }}
+
+ 						</div>
+							{% endif %}
+ 					</div>
+
+ 				{% endif %}
+ 			{% endfor %}
+ 			</div>
+
+                {% endif %}
+                {% endfor %}
+
+</div>
+	</div>
+
+
+
+	<br/>
+ 		{% endfor %}
+ 		</ol>
+
+
+ 		<div class="submit-button"><input type="submit" value="Envoyer"></div>
+ 	</form>
+
+
+ </div>
+	</div>
+</div>
+</ul>
+
+
+
+{% endblock %}
+
+
+</body>
+</html>

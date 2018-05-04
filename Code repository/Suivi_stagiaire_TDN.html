@@ -1,0 +1,89 @@
+{# {% extends "registration/base.html" %} #}
+{% extends "registration/Base_TDN.html" %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+{% block content %}
+    
+    
+    
+<div class="card">
+  <div class="card-header">
+    {{stagiaire.name}}
+  </div>
+  <div class="card-block" id="Profil">
+    <h4 class="card-title">Information générales</h4>
+    <p class="card-text">Service : {{stagiaire.profil.get_profil_display}}</p>
+      <p class="card-text">Arrivée : {{stagiaire.date_debut}}</p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Modifier profil </a>
+			<div class="collapse" id="collapseExample">
+ 				 <div class="card card-block">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                  </div>
+           </div>
+    </div>
+  		<div class="card-block" id="Simulations">
+      		<h4 class="card-title">Formation théorique</h4>
+      		<p class="card-text">Les trois prochains modules théoriques : XX </p>
+   		 </div>
+    </div>
+    <div class="card-block"> Simu réalisées : {{nb_simu}} </div>
+    <div class="card-block"> Doublures  </div>
+    <div class="card-block"> Synthèse  </div>
+    <div class="card-block"> Formation théorique  </div>
+    <div class="card-block"> Objectifs à valider  </div>
+    <div class="card-block"> {% for palmar in palmares %}
+    <div>
+        <p>"{{ palmar.objectif }}" ({{palmar.date_reussite}})</p>
+
+    </div>
+{% endfor %}  </div>
+    </div>
+
+    
+
+        
+        
+    
+<div class="card" id="Bloc_alertes">
+          {% if events %}
+         {% for event in events %}
+    <div class="card-block">
+        {% if event.alerte %}
+        <div><span style="font-size:1.5em;" class="glyphicon glyphicon-warning-sign"></span><b> Publié le {{ event.date}} par {{ event.formateur.first_name}} {{ event.formateur.last_name}}</b>
+            <a class="btn btn-xs" href="{% url 'synth:event_edit' event.pk %}"><span style="font-size:0.8em;" class="glyphicon glyphicon-pencil"></span></a></div>
+        <p>{{ event.description }}</p>
+        {% else %}
+        <div><b>Publié le {{ event.date}} par {{ event.formateur.first_name}} {{ event.formateur.last_name}}</b>
+            <a class="btn btn-xs" href="{% url 'synth:event_edit' event.pk %}"><span style="font-size:0.8em;" class="glyphicon glyphicon-pencil"></span></a></div>
+        <p>{{ event.description }}</p>
+        {% endif %}
+    </div>
+        <br/>
+{% endfor %}
+
+
+          {% endif %}
+     <div class="card" id="Bloc_synthese_alertes">
+         <p><a href="{% url 'synth:event_new' stagiaire.id %}">Poster un évènement</a></p>
+         <p>Nombre d'évènements : {{nb_events}}</p>
+         <p>Alerte(s): {{nb_events_alerte}}</p>
+
+     </div>
+
+  </div>
+
+
+{% endblock %}
+</body>
+</html>

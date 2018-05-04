@@ -1,0 +1,279 @@
+body
+{
+    background-color: #347691;
+    color: black;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+h1
+{
+    color: white;
+    text-align: center; /* on rétablit l'alignement normal du texte */
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+h2,h4
+{
+    color: black;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+h3
+{
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+#banniere_image
+{
+    height: 300px;
+    background: url('images/lignes2.jpg') no-repeat;
+    top: -10px;
+    background-size: 100% 320px;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 15px;
+}
+
+#relative{
+    height: 40px;
+    position: relative;
+        top: -10px;
+
+}
+
+#barre_menu{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 15px;
+}
+
+.section
+{
+    display: flex;
+    margin: 20px;
+    margin-right: 40px;
+
+}
+
+.sous_section
+{
+    flex: 1;
+
+}
+
+.article
+{
+    margin-right: 30px;
+    padding: 15px;
+    flex: 3;
+}
+
+.aside
+{
+    flex: 1.7;
+    background-color: #f1f2f3;
+    background-image:linear-gradient(#727375, black);
+    box-shadow: 0px 5px 8px #1c1a19;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+
+}
+
+.alerte{
+    background-image:linear-gradient(#b03a2e , #ec7063);
+    box-shadow: 0px 5px 8px #1c1a19;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    }
+
+.section2
+{
+    display: flex;
+}
+
+.vignette{
+    flex: 1;
+    text-align: center;
+    background-image:linear-gradient(#5d6d7e , #515a5a );
+    height: 100px;
+    box-shadow: 0px 5px 8px #1c1a19;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 70px 30px 70px 30px;
+    display: flex;
+    }
+
+a.vign{
+    color: white;
+    font-family: 'Impact', Arial, sans-serif;
+    font-size: 25px;
+}
+
+div.pratique{
+border: 2px solid black;
+border-radius: 10px;
+margin: 0px 20px;
+padding: 5px 5px;
+background-color: #a0c3db;
+}
+
+.rep_formateur{
+border: 2px solid black;
+border-radius: 10px;
+}
+
+#conteneur {
+margin-left: auto;
+margin-right: auto;
+width: 200px;
+text-align: center; /* on rétablit l'alignement normal du texte */
+}
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 200px;
+  top: 100%; /* Bottom of button */
+  right: 0;
+  margin-left: auto; /* More to the left */
+  margin-right: auto; /* More to the left */
+}
+
+.center-div-300 {
+     margin: 0 auto;
+     margin-top: 300px;
+     width: 300px;
+     text-align: center
+}
+
+.center-div-500 {
+     margin: 0 auto;
+     width: 600px;
+     text-align: center
+}
+
+.alert_accueil {
+     margin-left:auto;
+     margin-right:30px;
+     width: 400px;
+}
+
+.notification {
+     margin: 0 auto;
+     width: 1200px;
+     text-align: center
+}
+
+#lien{
+color:#373742;
+font-size: 15px;
+}
+
+#ref{
+color:black;
+font-size: 18px;
+}
+
+.aligne{
+     text-align: center
+}
+
+table{
+border: 1px solid black;
+width: 100%;
+    font-size: 16px;
+border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+}
+
+td, th{
+padding:5px
+}
+
+.center-div-doublure{
+    margin: 0 auto;
+     margin-top: px;
+     width: 380px;
+     text-align: center;
+     background-color: white;
+       border-radius: 10px;
+    border: 1px solid black;
+}
+
+.fond{
+background-color: #373742;
+border: solid 1px black;
+border-radius: 10px;
+}
+
+.large_90{
+margin: 0 auto;
+width: 90%;
+}
+
+.large_60{
+margin: 0 auto;
+width: 60%;
+}
+
+.large_40{
+margin: 0 auto;
+width: 40%;
+}
+
+.large_30{
+margin: 0 auto;
+width: 30%;
+}
+
+.large_80{
+margin: 0 auto;
+width: 80%;
+
+}
+
+.int{
+margin: 3px 3px 3px 3px;
+border: solid 1px black;
+background-color: white;
+border-radius: 10px;
+padding:3px 3px;
+}
+
+.img_id{
+  max-width: 100%;
+}
+
+.prop_row{
+padding-top:4px;
+padding-bottom:4px;
+
+margin: 12px 0px 5px 0px;
+border: solid 1px black;
+border-radius: 5px;
+
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.petit{
+font-size:10px;
+}
+
+.table_doublure{
+margin: 10px 0px 0px 0px;
+padding-right:10px;
+padding-left:10px;
+
+}

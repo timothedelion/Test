@@ -1,0 +1,59 @@
+{% extends "registration/base.html" %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Global</title>
+</head>
+
+<body>
+{% block content %}
+<div class="center-div-500">
+<a href="{% url 'doublure:indexdoublure' stagiaire.id %}" class="btn btn-primary" role="button">Retour vers l'index du stagiaire</a>
+</div>
+<br/>
+<h1>Doublures: {{stagiaire}}</h1>
+<br/>
+<div class="table_doublure" style="position: relative;">
+<table bgcolor="#00FF00" border="1" style="padding:3px">
+    <thead bgcolor="a0c3db">
+       <tr style="height:50px;"  >
+               <th style="width:3%;text-align: center;">N°</th>
+            <th style="width:7%;text-align: center;"><b>Date</b></th>
+            <th style="width:5%;text-align: center;" ><b>Zone</b></th>
+            <th style="width:5%;text-align: center;" ><b>CCO</b></th>
+            <th style="width:5%;text-align: center;" ><b>MCE</b></th>
+            <th style="width:25%;text-align: center;"><b>Thèmes abordés</b></th>
+            <th style="width:25%;text-align: center;"><b>Points positifs</b></th>
+            <th style="width:25%;text-align: center;"><b>Axes d'amélioration</b></th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for doublure in doublures %}
+
+       <tr bgcolor="#d7dee3" ALIGN="CENTER">
+           <td bgcolor="#a0c3db" ><b>{{doublure.numero_doublure}}</b></td>
+           <td>{{doublure.created|date:"d M Y" }}</td>
+               {% if doublure.get_zone_display == 'Ouest' %}
+                <td bgcolor="#f9e79f">{{doublure.get_zone_display}}</td>
+               {% elif doublure.get_zone_display == 'Sud' %}
+                <td bgcolor="#76d7c4">{{doublure.get_zone_display}}</td>
+               {% elif doublure.get_zone_display == 'Est' %}
+                <td bgcolor="#7fb3d5">{{doublure.get_zone_display}}</td>
+               {% else %}
+                <td>{{doublure.get_zone_display}}</td>
+               {% endif %}
+           <td>{{doublure.cco}}</td>
+           <td>{{doublure.mce}}</td>
+           <td style="width:500px">{{doublure.comments}}</td>
+           <td style="width:500px">{{doublure.positif}}</td>
+           <td style="width:500px">{{doublure.amelioration}}</td>
+       </tr>
+
+    {% endfor %}
+
+    </tbody>
+</table>
+</div>
+{% endblock %}
+</body>
+</html>

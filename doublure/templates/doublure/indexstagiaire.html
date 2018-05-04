@@ -1,0 +1,47 @@
+{% extends "registration/base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Stagiaire</title>
+</head>
+<body>
+{% block content %}
+<div class="center-div-500">
+<div class="btn-group ">
+ <a href="/simulation/validationdoublure/" class="btn btn-primary">Valider un niveau de doublure</a>
+</div>
+
+<h1>  &nbsp;&nbsp;<u>Doublures</u> </h1>
+    <br/><br/>
+  <h2> &nbsp;&nbsp;<u>Stagiaires :</u> </h2>
+{% if stagiaire_list %}
+<div>
+  <ul class="nav nav-pills nav-stacked">
+    {% for stagiaire in stagiaire_list %}
+        {% if stagiaire.formation_finie == False %}
+           <li> <a href="{% url  'doublure:indexdoublure' stagiaire.id %}"> <h3>{{stagiaire.name}}</h3> </a></li>
+        {% endif %}
+
+    {% endfor %}
+
+
+<br/>
+
+  <h2> &nbsp;&nbsp;<u>Formation achevée :</u> </h2>
+
+    {% for stagiaire in stagiaire_list %}
+        {% if stagiaire.formation_finie == True %}
+        <li><a href="{% url  'doublure:indexdoublure' stagiaire.id %}"> <h3>{{stagiaire.name}}</h3> </a></li>
+        {% endif %}
+    {% endfor %}
+
+{% endif %}
+
+</ul>
+</div>
+
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

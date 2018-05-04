@@ -1,0 +1,118 @@
+{% extends "registration/base.html" %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+<body>
+{% block content %}
+<div class="center-div-500">
+<a href="{% url 'doublure:indexdoublure' stagiaire.id %}" class="btn btn-primary " role="button"> Retour vers l'index du stagiaire</a>
+        &nbsp;&nbsp;
+        <a href="/doublure/global/{{stagiaire.id}}/" class="btn btn-primary">Vision globale des validations</a>
+</div>
+<br/>
+
+<div class="">
+
+    <div class="large_80" style="padding:4px; border:4px solid #e0e0e0;">
+ <div style="padding:10px; background-color:#e0e0e0;">
+     <div style="padding:3px; border:2px dotted #a5a5a5; background-color:#e3e3e3;">
+    <h2> {{rep.numero_doublure}}  </h2>
+         <a class="btn btn-default" href="{% url 'doublure:modif' pk=rep.pk id=stagiaire.id  %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <br/>
+     </div>
+     <br/>
+    CCO : {{rep.doubleur}} <br/>
+     MCE : {{rep.mce}} <br/>
+    <b> Stagiaire : {{rep.stagiaire}}</b> <br/>
+     Zone : {{rep.get_zone_display}} <br/>
+ <br/>
+<div style="padding:3px; border:5px double #ff6b00; background-color:#ffdbc1;position: relative;">
+    <table border="1" style="padding:5px">
+        <tr><td align="center" style="width:33%;"><b>Thèmes abordés, situation particulières rencontrées</b></td>
+            <td align="center" style="width:33%"><b>Points positifs</b></td>
+            <td align="center" style="width:34%"><b>Axe d"amélioration</b></td>
+        </tr>
+        <tr><td>{{rep.comments}}</td><td>{{rep.positif}}</td><td>{{rep.amelioration}}</td></tr>
+     </table>
+</div>
+
+
+     <br/><br/>
+
+
+    {% for theme in themes %}
+    <div style="padding:4px; border:4px solid #bbbbbb; width:100%">
+ <div style="padding:2px; background-color:#bbbbbb;position: relative;">
+    <table border="1" cellpadding="5" cellspacing="0" width="95%">
+        <tr><td rowspan="145" width="12%"><b> {{theme}}</b></td>
+        {% for soustheme in sousthemes %}
+            {% if theme == soustheme.theme %}
+
+
+
+                {% for a in answers %}
+
+                    {% if soustheme == a.objectif.soustheme %}
+                        <td width="12%">{{soustheme}}</td>
+
+                      <td align="left" valign="center" width="40%">
+                                    {{a.objectif.text}}
+                      </td>
+                      {% if a.body == 'Validé' %}
+                      <td align="center" valign="center" style="color:lime;" width="10%"><p>
+                    <b>{{a.body}}</b>   </p></td>
+
+                      {% elif a.body == 'Difficultés' %}
+                      <td align="center" valign="center" style="color:red;"><p>
+                    <b>{{a.body}}</b>   </p></td>
+                      {% else %}
+                      <td align="center" valign="center" style="color:orange;"><p>
+                    <b>{{a.body}}</b>   </p></td>
+                        {% endif %}
+
+
+            <td align="right" style="color:blue;font-size:9pt" width="26%">
+      <em> Commentaire : {% if a.comments %}  {{a.comments}} {% endif %} </em></td>
+                    {% endif %}
+
+
+</tr>
+                {% endfor %}
+
+
+
+
+
+    {% endif %}
+
+
+
+    {% endfor %}
+        </table>
+
+ </div>
+ </div>
+
+<br/>
+     <br/>
+
+
+{% endfor %}
+
+ </div>
+    </div>
+
+
+<p>
+
+
+
+</p>
+
+</div>
+{% endblock %}
+
+</body>
+</html>

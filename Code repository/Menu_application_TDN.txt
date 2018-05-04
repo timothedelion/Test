@@ -1,0 +1,10 @@
+  <li class="nav-item">    <a class="nav-link active" href="/accounts/login/accueil/"><span class="glyphicon glyphicon-home"></span>  Accueil</a>  </li>
+  <li class="nav-item">    <a class="nav-link active" href="/simulation/">  Simulations</a>  </li>
+  <li class="nav-item">    <a class="nav-link active" href="/formationtheorique/index">  Formations théoriques</a>  </li>
+  <li class="nav-item">    <a class="nav-link active" href="/doublure/index/">  Doublures</a>  </li>
+  <li class="nav-item">    <a class="nav-link" href="/synthese/"> Synthèse </a></li>
+  <li class="nav-item">    <a class="nav-link" href="/synthese/suivi"> Stagiaires </a></li>
+  <li class="nav-item">    <a class="nav-link" href="/pratique/index"> Forum </a></li>
+  <li class="nav-item navbar-right">  <a class="nav-link disabled">  <span class="glyphicon glyphicon-user"></span>  {{user.first_name}} {{user.last_name}}</a></li>
+    <li class="nav-item navbar-right">    <a class="nav-link" href="/admin/"><span class="glyphicon glyphicon-wrench"></span>  Administration</a></li>
+   <li class="nav-item navbar-right">    <a class="nav-link" href="/accounts/logout/"><span class="glyphicon glyphicon-log-out"></span>  Déconnexion</a></li>

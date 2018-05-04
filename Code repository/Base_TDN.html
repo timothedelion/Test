@@ -1,0 +1,243 @@
+<!doctype html>
+{% load static %}
+
+<!-- Variables :
+variable "block" HTML :
+	- Titre_Page
+	- L_sidebar: liste des étiquettes du premier menu vertical de gauche. Le premier sera le titre de ce menu
+	- L_sidebar_active : liste de booleens pour déterminer quelles etiquettes sont actives
+	- d_notifications: dictionnaire de notifications à afficher sur la page :
+		key : "danger" ou "warning" ou "success" ou "info"
+		value : le texte de la notification
+
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <!--  <link rel="icon" href="../../../../favicon.ico"> -->
+    <link rel="stylesheet" href="{% static 'Styles_base.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">  <!-- Icones développés par http://fontawesome.io/icons/ pour Bootstrap 4.x -->
+
+    <title>Template Application Formation</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript">
+<!--
+function KeepUserMenu(){
+if (User.style.display=="none") User.style.display="block";
+else User.style.display="block";
+User_dropdown.active;
+}
+
+function ToogleUserMenu(){
+if (User.style.display=="none") User.style.display="block";
+else User.style.display="none";
+}
+
+$('#Menu_appli .dropdown-item').on({
+	"click":function(e){
+      e.stopPropagation();
+    }
+});
+
+$('#User_dropdown .dropdown-item').on({
+	"click":function(e){
+      e.stopPropagation();
+    }
+});
+//-->
+</script>
+
+<!--
+<a href="#" onClick="ShowUser();">Show</a>
+<div id="DIV1" style="display: none;">some content</div> -->
+
+
+
+  </head>
+
+  <body>
+
+      {% block Menu_application %}
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Form@ppli</a>
+
+<!--    <ul class="nav navbar-nav">
+         <li><a href="/accounts/login/accueil/"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+         <li><a href="/simulation/">Simulations </a></li>
+         <li><a href="/formationtheorique/index"> Formations théoriques </a></li>
+         <li><a href="/doublure/index/">Doublures </a></li>
+         <li><a href="/synthese/"> Synthèse </a></li>
+         <li><a href="/synthese/suivi"> Stagiaires </a></li>
+         <li><a href="/pratique/index"> Forum </a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a><span class="glyphicon glyphicon-user"></span>  {{user.first_name}} {{user.last_name}}</a></li>
+          <li><a href="/admin/"><span class="glyphicon glyphicon-wrench"></span>  Administration</a></li>
+      <li><a href="/accounts/logout/"><span class="glyphicon glyphicon-log-out"></span>  Déconnexion</a></li>
+    </ul>
+-->
+
+
+        <div class="collapse navbar-collapse navbar-fixed-top" id="Menu_appli">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/accounts/login/accueil/"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/simulation/">Simulations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/formationtheorique/index">Formations théoriques</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/doublure/index/">Doublure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/synthese/">Synthèse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pratique/index">Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/"><i class="fa fa-wrench" aria-hidden="true"></i>  Administration</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a class="nav-link" href="/accounts/logout/"><i class="fa fa-sign-out" aria-hidden="true"></i>  Déconnexion</a>
+                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" onClick="ToogleUserMenu();" href="#" id="User_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-user" aria-hidden="true"></i> {{user.first_name}} {{user.last_name}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="User_dropdown"  style="width:400px" id="User">
+                        <a class="dropdown-item"  href="#Notifications" onClick="KeepUserMenu();" data-toggle="collapse" aria-controls="Notifications"> Notifications </a>
+
+                        <div class="collapse" id="Notifications" data-parent="#User_dropdown">
+                            <div class="dropdown-divider" ></div>
+                            <ul>
+                                <li>1</li>
+                                <li>2</li>
+                                <li>2</li>
+                            </ul>
+
+
+
+                                <!--<div class="alert alert-warning">
+                                                <h4 class="alert-heading"> Autonomie  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></h4>
+                                                <p>Il est temps de <a href="#" class="alert-link">valider des autonomies</a> ({{list_stagiaire}}) </p>
+                                            </div>-->
+
+                        </div>
+                        <div class="dropdown-divider"></div>
+
+
+
+                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>  Déconnexion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </nav>
+</header>
+
+
+   <div id=banniere_image><!--img src="capture.jpg"/--></div>
+            {% endblock Menu_application %}
+      
+   <nav class="navbar navbar-toggleable-md navbar-light bg-faded justify-content-center">
+<h1> {% block Titre_Page %}Simulations{% endblock %} </h1>
+</nav>
+      
+            
+<div class="row">
+{% block Sidebar %}<div class="list-group col-md-2">
+  <a href="#" class="list-group-item active">
+      Stagiaires
+      {% for i in L_sidebar %}
+      	{# {% If L_sidebar_active[i] %} #}
+      		<!-- <a href="#" class="list-group-item list-group-item-action active">L_sidebar[i]</a> -->
+      	{# {% else  %} #}
+      		<a href={{lien}} class="list-group-item list-group-item-action">{{i}}</a>
+      	{# {% endif %} #}
+      {% endfor %}
+  </a>
+<!--  <a href="#" class="list-group-item list-group-item-action">Thibault NABARRO</a>
+  <a href="#" class="list-group-item list-group-item-action">Marie CECCONI</a>
+  <a href="#" class="list-group-item list-group-item-action">Germain FLEURY</a>
+  <a href="#" class="list-group-item list-group-item-action">Yann ELAIN</a>
+    <a href="#" class="list-group-item active">    Contenu  </a>
+    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a> -->
+ 
+</div>{% endblock Sidebar %}
+
+<div class="list-group col-md-8">
+<br/>
+    {% block Content %}
+<br/>
+<h2> RDCR Plaine Haute - Trégueux 225 kV n°1 </h2>
+Le stagiaire donne le RDCR de la liaison, et analyse le besoin de mise en poche.<br/><br/>
+
+
+<div class="container" id="atendu_simu">
+  <div class="row">
+    <div class="col-sm">
+      Attendu 1
+    </div>
+    <div class="col-sm">
+      <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary btn-success">OUI</button>
+  <button type="button" class="btn btn-secondary">NON</button>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm">
+      Attendu 2
+    </div>
+    <div class="col-sm">
+      <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary">OUI</button>
+  <button type="button" class="btn btn-secondary">NON</button>
+</div>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="row" id="bouton_large">
+<br/>
+	<div class="col-3"></div>
+	<div class="col-6">
+		<button type="button" class="btn btn-primary btn-lg btn-block">Enregistrer la simulation</button>
+	</div>
+	<div class="col-3"></div>
+</div>
+    {% endblock %}
+<br/>
+</div>
+
+
+<div class="list-group col-md-2">
+  <a href="#" class="list-group-item list-group-item-action active">Notifications</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Danger</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Warning</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-success">Success</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-info">Infos</a>
+</div>
+
+</div>
+
+

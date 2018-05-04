@@ -1,0 +1,7 @@
+#banniere_image
+{
+    height: 150px;
+    background: url('images/lignes2.jpg') no-repeat;
+    background-size: 100% 320px;
+    position: relative;
+}

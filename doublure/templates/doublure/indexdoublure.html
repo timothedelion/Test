@@ -1,0 +1,38 @@
+{% extends "registration/base.html" %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+<body>
+{% block content %}
+<div class="center-div-500">
+
+    <a href="/doublure/global/{{stagiaire.id}}/" class="btn btn-primary">Vision globale des validations</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'synth:StagiaireSuivi' stagiaire.id %}" class="btn btn-primary">Consultation fiche stagiaire</a>
+
+<h1>Doublures</h1>
+<h2>{{stagiaire}}</h2>
+
+
+<br/>
+<div class="fond large_60">
+    <div class="int">
+{% if rep_list %}
+    {% for rep in rep_list %}
+          <h2><a href="{% url  'doublure:confirmation' rep.doublure_uuid %}" style="color:green">{{rep.numero_doublure}}&nbsp;&nbsp;&nbsp;({{rep.zone}})&nbsp;&nbsp;&nbsp;{{rep.created|date:"d M Y" }}</a></h2>
+    {% endfor %}
+{% endif %}
+
+{% if doublure_list %}
+    {% for doublure in doublure_list %}
+    <h2><a href="{% url  'doublure:doublureDetail' pk=stagiaire.id id=doublure.id %}" style="color:grey">{{doublure}} </a></h2>
+    {% endfor %}
+{% endif %}
+        </div>
+</div>
+    </div>
+{% endblock %}
+</body>
+</html>
