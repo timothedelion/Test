@@ -23,6 +23,8 @@ def is_formateur(user): # vérifie si l'utilisateur identifié est un formateur,
 def is_stagiaire(user):
     return user.groups.filter(name='Stagiaire').exists()
 
+def nouvelle_vue(request):
+    return render("accueil.html")
 
 def is_doubleur(user):
     return user.groups.filter(name='Doubleur').exists()
